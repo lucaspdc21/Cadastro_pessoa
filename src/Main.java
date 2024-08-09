@@ -3,12 +3,9 @@ import Models.Pessoa;
 
 public class Main {
     public static void main(String[] args) {
-        Pessoa pessoa = new Pessoa("João", 25, "email", "1");
+        Pessoa pessoa = new Pessoa("Lucas", 21, "example@teste.com", "(85)9999-9999");
         PessoaController pc = new PessoaController();
-        try {
-            pc.cadastrarPessoa(pessoa);
-        } catch (Exception e) {
-            e.printStackTrace();
-    }
+        pc.cadastrarPessoa(pessoa);
+        pc.fecharArquivo();
     }
 }
