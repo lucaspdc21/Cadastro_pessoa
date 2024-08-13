@@ -10,7 +10,7 @@ Acesse o [Relatório do Projeto](link) com informações relacionadas as escolha
 # Informações Técnicas
 
 ## Documentação dos requisitos do projeto
-[Documentação - CRUD](link) 
+[Documentação - CRUD](https://github.com/lucaspdc21/Cadastro_pessoa/blob/main/2024_CK_0235_TRAB_03_ESPECIFICACOES.pdf)
 
 ## Funcionalidades
 O projeto utiliza conceitos relacionados à Programação Orientada a Objetos em Java. Além disso, o programa é capaz de armazenar as informações em um arquivo .txt, garantindo a persistência dos dados entre execuções.
