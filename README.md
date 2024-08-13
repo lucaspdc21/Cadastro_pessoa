@@ -30,6 +30,9 @@ Método que permite a exclusão dos dados do usuário a partir da solicitação 
 ### Classe Main padrão
 Classe padronizada criada pelos discentes a fim de testar a aplicação console.
 
+## Adicionais implementados
+- Interface gráfica da aplicação no terminal.
+
 # Demonstração da aplicação
 [Youtube](https://youtu.be/wakGBqog4UI)
 
