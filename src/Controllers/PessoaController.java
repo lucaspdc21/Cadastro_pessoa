@@ -1,46 +1,52 @@
 package Controllers;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import Models.Pessoa;
 
 public class PessoaController {
 
     private String enderecoArquivo = "pessoas.txt";
-    private FileWriter fw;
-    private BufferedWriter bw;
+    private List<Pessoa> listaDePessoas = new ArrayList<>();
 
     public PessoaController() {
-        try {
-            fw = new FileWriter(enderecoArquivo, true);
-            bw = new BufferedWriter(fw);
+        lerArquivo();
+    }
+
+    public void cadastrarPessoa(Pessoa pessoa) {
+        listaDePessoas.add(pessoa);
+    }
+
+    private void lerArquivo() {
+        try (FileReader fr = new FileReader(enderecoArquivo);BufferedReader br = new BufferedReader(fr)) {
+            String linhaLida;
+            while ((linhaLida = br.readLine()) != null) {
+                Pessoa pessoa = Pessoa.capturaNoArquivo(linhaLida);
+                listaDePessoas.add(pessoa);
+            }
         } catch (IOException e) {
-            System.out.println("Erro ao acessar o arquivos de pessoas");
+            System.out.println("Erro ao ler o arquivo de pessoas");
         }
     }
 
-    public void cadastrarPessoa(Pessoa pessoa){
-        try{
-            bw.write(pessoa.toString());
-            // Pula a linha para o próximo cadastro
-            bw.newLine();
-            // Força a escrita dos dados em Buffer
+    private void escreverArquivo() {
+        try (FileWriter fw = new FileWriter(enderecoArquivo, false);BufferedWriter bw = new BufferedWriter(fw)) {
+            for (Pessoa pessoa : listaDePessoas) {
+                bw.write(pessoa.toString());
+                bw.newLine();
+            }
             bw.flush();
         } catch (IOException e) {
-            System.out.println("Erro ao cadastrar a pessoa:");
-        }
-    }
-    
-    // Método necessario para fechar o arquivo após as alterações, OBRIGATORIO
-    public void fecharArquivo(){
-        try {
-            bw.close();
-            fw.close();
-        } catch (IOException e) {
-            System.out.println("Erro ao fechar o arquivo de pessoas");
+            System.out.println("Erro ao escrever no arquivo de pessoas");
         }
     }
 
-
+    public void encerrarPrograma() {
+        escreverArquivo();
+    }
 }
