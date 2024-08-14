@@ -22,12 +22,13 @@ public class Main {
             sc.nextLine();
             switch (escolha) {
                 case 1:
-                    if(intanciarPessoa(sc, pc) == null){
+                    Pessoa pessoa = intanciarPessoa(sc, pc);
+                    if(pessoa == null){
                         break;
                     }else{
-                        pc.cadastrarPessoa(intanciarPessoa(sc, pc));
-                    };
-                    break;
+                        pc.cadastrarPessoa(pessoa);
+                        break;
+                    }
                 case 2:
                     System.out.println("Digite o nome da pessoa que deseja deletar:");
                     String nome = sc.nextLine();
@@ -77,8 +78,7 @@ public class Main {
 
     private static Pessoa intanciarPessoa(Scanner sc, PessoaController pc) {
         System.out.println("Digite o nome da pessoa:");
-        String nome = sc.next();
-        sc.nextLine();
+        String nome = sc.nextLine();
         for(Pessoa p : pc.getListaDePessoas()){
             if(p.getNome().equalsIgnoreCase(nome)){
                 System.out.println("Pessoa já cadastrada.\n");
@@ -90,11 +90,9 @@ public class Main {
         int idade = sc.nextInt();
         sc.nextLine();
         System.out.println("Digite o email da pessoa:");
-        String email = sc.next();
-        sc.nextLine();
+        String email = sc.nextLine();
         System.out.println("Digite o telefone da pessoa:");
-        String telefone = sc.next();
-        sc.nextLine();
+        String telefone = sc.nextLine();
         Pessoa pessoa = new Pessoa(nome, idade, email, telefone);
         return pessoa;
     }

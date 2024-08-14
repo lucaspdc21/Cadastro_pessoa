@@ -2,3 +2,4 @@ lucas,12,lucas,lucas
 lucas,21,lucas,lucas
 beatriz,20,beatriz,beatriz
 te,6,ter,ter
+lucas pinheiro,2,lu,lu

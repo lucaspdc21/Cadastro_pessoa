@@ -30,6 +30,7 @@ public class PessoaController {
             }
         }
         listaDePessoas.add(pessoa);
+        System.out.println(pessoa.getNome() + " cadastrado com sucesso!");
     }
 
     // Remove a pessoa pelo nome e atualiza o arquivo
