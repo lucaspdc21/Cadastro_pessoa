@@ -14,6 +14,7 @@ public class PessoaController {
 
     private String enderecoArquivo = "pessoas.txt"; 
     private List<Pessoa> listaDePessoas = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
 
     // Construtor que chama a função lerArquivo e armazena os dados em uma lista
     public PessoaController() {
@@ -22,6 +23,12 @@ public class PessoaController {
 
     // Adiciona o usuário na lista: objeto "Pessoa" na lista "Pessoas"
     public void cadastrarPessoa(Pessoa pessoa) {
+        for(Pessoa p : listaDePessoas){
+            if(p.getNome().equalsIgnoreCase(pessoa.getNome())){
+                System.out.println("Pessoa já cadastrada.");
+                return;
+            }
+        }
         listaDePessoas.add(pessoa);
     }
 
@@ -47,7 +54,7 @@ public class PessoaController {
     //printa todo mundo da lista
     public void listarPessoas() {
         for (Pessoa pessoa : listaDePessoas) {
-            System.out.println(pessoa);
+            System.out.println(pessoa.getNome());
         }
     }
     //busca pessoas na lista
@@ -55,10 +62,11 @@ public class PessoaController {
         boolean encontrou = false;
         for (Pessoa pessoa : listaDePessoas) {
             if (pessoa.getNome().equalsIgnoreCase(nome)) {
-                System.out.println(pessoa);
+                System.out.println("\nAtributos de "+pessoa.getNome()+"\nEmail: "+pessoa.getEmail()+"\nTelefone: "+pessoa.getTelefone()+"\nIdade: "+pessoa.getIdade()+"\n");
                 encontrou = true;
             }
         }
+        
         if (!encontrou) {
             System.out.println("Pessoa não encontrada");
         }
@@ -74,8 +82,6 @@ public class PessoaController {
         }
 
         if (pessoaParaAtualizar != null) {
-            Scanner scanner = new Scanner(System.in);
-            
             // Atualizar nome
             System.out.print("Digite o novo nome (ou pressione Enter para manter o nome atual): ");
             String novoNome = scanner.nextLine().trim();
@@ -117,11 +123,12 @@ public class PessoaController {
 
             
             escreverArquivo();
-            System.out.println("Informações atualizadas com sucesso.");
-            scanner.close();
+            System.out.println("Informações atualizadas com sucesso.\n");
+        
         } else {
-            System.out.println("Pessoa não encontrada.");
+            System.out.println("Pessoa não encontrada.\n");
         }
+        
         
     }
 
@@ -154,5 +161,9 @@ public class PessoaController {
     // Encerra o programa após escrever os dados no arquivo
     public void encerrarPrograma() {
         escreverArquivo();
+    }
+
+    public List<Pessoa> getListaDePessoas() {
+        return listaDePessoas;
     }
 }

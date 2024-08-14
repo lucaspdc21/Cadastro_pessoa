@@ -16,13 +16,17 @@ public class Main {
                 "2 - Deletar pessoa\n" +
                 "3 - Listar pessoas\n" +
                 "4 - Buscar pessoa\n" +
-                "5 - Atualizar daods de uma pessoa" +
+                "5 - Atualizar dados de uma pessoa\n" +
                 "6 - Encerrar programa\n");
             int escolha = sc.nextInt();
             sc.nextLine();
             switch (escolha) {
                 case 1:
-                    pc.cadastrarPessoa(intanciarPessoa(sc, pc));
+                    if(intanciarPessoa(sc, pc) == null){
+                        break;
+                    }else{
+                        pc.cadastrarPessoa(intanciarPessoa(sc, pc));
+                    };
                     break;
                 case 2:
                     System.out.println("Digite o nome da pessoa que deseja deletar:");
@@ -34,15 +38,16 @@ public class Main {
                     }else{
                         System.out.println("Operação cancelada.");
                     }
-                        pc.deletarPessoa(null);
                     break; 
                 case 3:
-                    System.out.println("Lista de pessoas cadastradas:");
+                    System.out.println("\n------------Lista de pessoas cadastradas----------------");
                     pc.listarPessoas();
+                    System.out.println("--------------------------------------------------------\n");
                     break;
                 case 4:
                     System.out.println("Digite o nome da pessoa que deseja buscar:");
                     String nomePessoa = sc.nextLine();
+                    System.out.println("Pessoa encontrada:");
                     pc.buscarPessoa(nomePessoa);
                     break;
                 case 5:
@@ -74,6 +79,13 @@ public class Main {
         System.out.println("Digite o nome da pessoa:");
         String nome = sc.next();
         sc.nextLine();
+        for(Pessoa p : pc.getListaDePessoas()){
+            if(p.getNome().equalsIgnoreCase(nome)){
+                System.out.println("Pessoa já cadastrada.\n");
+                return null;
+            }
+        }
+        
         System.out.println("Digite a idade da pessoa:");
         int idade = sc.nextInt();
         sc.nextLine();
