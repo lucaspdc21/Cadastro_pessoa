@@ -34,6 +34,6 @@ Classe padronizada criada pelos discentes a fim de testar a aplicação console.
 - Interface gráfica da aplicação no terminal.
 
 # Demonstração da aplicação
-[Youtube](https://youtu.be/wakGBqog4UI)
+[Youtube](https://youtu.be/Is2I85Kmuxs?si=HXUhNrrn3xgQA5BY)
 
 </p>
