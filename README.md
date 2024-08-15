@@ -5,7 +5,7 @@ Aplicação desenvolvida pelos discentes do terceiro semestre do curso de Ciênc
 
 O objetivo deste repositório é armazenar o código fonte do trabalho prático da disciplina de Técnicas de Programação. O projeto é totalmente desenvolvido em Java e funciona como uma aplicação console, implementando um sistema CRUD, isto é: Create, Read, Update e Delete no registro de usuários.
 
-Acesse o [Relatório do Projeto](link) com informações relacionadas as escolhas de design e a implementação.
+Acesse o [Relatório do Projeto](https://github.com/lucaspdc21/Cadastro_pessoa/blob/main/UFC_CK0235_9_Relat%C3%B3rio_Trab_03.pdf) com informações relacionadas as escolhas de design e a implementação.
 
 # Informações Técnicas
 
